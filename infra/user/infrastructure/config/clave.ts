@@ -1,6 +1,4 @@
-//import crypto module
-import crypto from 'crypto';
-//generate key pair
+/* import crypto from 'crypto';
 const { generateKeyPair } = require('crypto');
 generateKeyPair('rsa', {
   modulusLength: 4096,
@@ -14,11 +12,9 @@ generateKeyPair('rsa', {
     cipher: 'aes-256-cbc',
     passphrase: 'top secret'
   }
-// Handle errors and use the generated key pair
 }, (err: any, publicKey: any, privateKey: any) => {
   publicKey
 });
-//Assign key to variable
 const publicKeyString = `-----BEGIN RSA PUBLIC KEY-----
 MIICCgKCAgEAzXlBBes4SpVk5BxPVuY+LR5+pxcjTNVzlVl4ugix3husiWPSfnYl
 K+z0zmWwGRBXncVgjRb/SliBhHDKSyqJ+gvk8RU1rO7qSFK0hGTrO63EKy4fbGgz
@@ -32,7 +28,5 @@ XvQgrLAHqfCQ7LwhUivjCjIfp2nYFYrzlDlUUZzg1AAKxhRJIUt58o7RnS/29zon
 Pur5caj1iOrhfuTvkCM4uQyampk1A5+98aOObA97jCQ7mWbn8St8Hpdqim1c2v0s
 QXeyRdm8aZ5xzJ5cZ2p2NWGvGoocx4c8i9GQuHUVktQE6nuMS7aKQlECAwEAAQ==
 -----END RSA PUBLIC KEY-----`;
-//Use the function to create and export the public key object
 const publickKeyObject = crypto.createPublicKey(publicKeyString);
-export default publickKeyObject/* .export({ format: 'pem', type: 'pkcs1' });
-console.log(publickKeyObject) */
+export default publickKeyObject */

@@ -2,13 +2,15 @@ import { NextFunction, Request,Response } from "express"
 /* import User, {IUser} from '../models/user' */
 import jwt, { SignOptions }  from 'jsonwebtoken'
 import config from '../config/config'
-import publickKeyObject from '../config/clave'
+
+//import publickKeyObject from '../config/clave'
 /* import {registerUser,getDetailUser} from '../services/user.service'
  */import { UserUseCase } from "../../application/userUseCase"
 import { IUser } from "../model/user"
 import fs from 'fs';
 const privateKey = fs.readFileSync('jwtRS256.key');
-/* const JWT_SECRET = fs.readFileSync('../config/clave', 'utf8'); */
+//const privateKey = process.env.JWT_SECRET;
+//const privateKey = fs.readFileSync('../config/clave', 'utf8');
 
 interface TokenData {
     token: string;

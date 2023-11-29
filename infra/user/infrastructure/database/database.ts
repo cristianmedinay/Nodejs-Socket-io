@@ -1,8 +1,11 @@
 import mongoose, {ConnectOptions } from 'mongoose'
-import config from '../config/config'
+/* import config from '../config/config' */
 
+
+const MONGODB_URI: string = process.env.MONGODB_URI ?? 'whatever default'
 const dbInit = ()=>{
-    mongoose.connect(config.DB.URI,{bufferCommands: true, autoIndex: true, autoCreate: true})
+    //mongoose.connect(config.DB.URI,{bufferCommands: true, autoIndex: true, autoCreate: true})
+    mongoose.connect(MONGODB_URI,{bufferCommands: true, autoIndex: true, autoCreate: true})
     const connection = mongoose.connection;
     connection.once('open',()=>{
         console.log('Mongodb connecion establecida')

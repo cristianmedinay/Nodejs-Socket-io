@@ -1,10 +1,24 @@
-export default {
-    
-    jwtSecret: process.env.JWT_SECRET || 'somesecrettoken',
+import 'dotenv/config'
+/* import dotenv from 'dotenv'; 
+dotenv.config(); */
+
+/* export default {
+   
+    jwtSecret: process.env.privateKey || '',
     DB:{
-        URI: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/jwttutorial',
+        URI:process.env.MONGODB_URI || '',
         USER: process.env.MONGODB_USER,
         PASSWORD: process.env.MONGODB_PASSWORD
+    }
+
+} */
+export default {
+    
+    jwtSecret: process.env.JWT_SECRET,
+    DB:{
+        URI: process.env.MONGODB_URI,
+        USER: process.env.MONGODB_USER,
+        PASSWORD: process.env.MONGODB_PASSWORD,
     }
 
 }

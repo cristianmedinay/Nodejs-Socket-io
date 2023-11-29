@@ -11,6 +11,8 @@ import cookies  from 'cookie-parser';
 import 'dotenv/config'
 const app = express();
 
+require('dotenv').config({ path: `${__dirname}/../.env` })
+
 //settings
 /* app.set('port', process.env.PORT || 3000) */
 
@@ -50,25 +52,33 @@ app.use(specialRoutes);
 let users: User[] = [{'name':'this.nombreUsuario1696780753597' },{ 'name':'this.nombreUsuario1696782325330'}]
 let datos:any = [];
 io.on('connection', (socket) => {
+
     console.log('a user connected');
+
     socket.on('increment', (arg) => {
-        datos.push(arg)
-        /* const arrayActualizado = users.map((e)=>{
-          return e.name==arg.nombreRemitente ? arg : e     
-        }) */
         
-        /* console.log(arg); */
+        datos.push(arg)
+      
         if(datos.length>1){
+
         const indiceAReemplazar = datos.findIndex((objeto:any) => objeto.remitente === arg.remitente);
-        console.log(indiceAReemplazar)
+      
         if (indiceAReemplazar !== -1) {            
             datos[indiceAReemplazar] = arg;        
         }
-        const mensajesSinDuplicados = Array.from(new Set(datos.map((mensaje:any) => mensaje.remitente))).map((remitente:any) => datos.find((mensaje:any) => mensaje.remitente === remitente));
-        console.log(mensajesSinDuplicados);
-        }
 
-        io.emit('nuevoMensaje', JSON.stringify(arg));
+        const mensajesSinDuplicados = Array.from(new Set(datos.map((mensaje:any) => mensaje.remitente))).map((remitente:any) => datos.find((mensaje:any) => mensaje.remitente === remitente));
+  
+        io.emit('nuevoMensaje', mensajesSinDuplicados);
+
+        }else{
+
+        io.emit('nuevoMensaje', datos);
+
+        }
+       
+
     });
-  });
+});
+
 export { app,io};
